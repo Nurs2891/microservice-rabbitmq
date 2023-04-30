@@ -1,0 +1,26 @@
+version: "3.3"
+
+services:
+
+  service-consumer:
+    container_name: service-consumer
+    image: service-consumer
+    depends_on:
+      - postgres
+    build: .
+    restart: always
+    ports:
+      - 8090:8090
+
+  postgres:
+    container_name: postgres
+    image: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=nurs
+      - POSTGRES_PASSWORD=4856
+      - POSTGRES_DB=testdb
+
+#docker exec -it [container id] psql -U nurs testdb

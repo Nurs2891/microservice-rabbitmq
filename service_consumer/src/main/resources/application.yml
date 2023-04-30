@@ -1,0 +1,26 @@
+server:
+  port: 8090
+
+spring:
+  datasource:
+    url: jdbc:postgresql://192.168.99.107:5432/testdb
+    username: nurs
+    password: 4856
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+
+  rabbitmq:
+    host: 192.168.99.107
+    port: 5672
+    username: admin
+    password: admin
+
+

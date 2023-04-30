@@ -1,0 +1,22 @@
+version: '3.3'
+
+services:
+
+  rabbitmq:
+    container_name: rabbitmq
+    image: rabbitmq:3.12.0-rc.1-management
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=admin
+    ports:
+      - 5672:5672
+      - 15672:15672
+
+  service-producer:
+    container_name: service-producer
+    image: service-producer
+    depends_on:
+      - rabbitmq
+    build: .
+    ports:
+      - 8080:8080
